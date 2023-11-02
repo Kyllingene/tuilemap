@@ -25,7 +25,8 @@ present:
 - `height = `: Set the default height
 - `tileset = `: Set the default tileset
 
-The parsing is extremely simplistic, so very little is supported.
+The parsing is extremely simplistic, so very little is supported. Quotations
+will be taken literally, but values are trimmed.
 
 ## Keybindings
 

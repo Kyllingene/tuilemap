@@ -4,6 +4,7 @@ use std::io::Write;
 use cod::Key;
 
 const HELP: &str = include_str!("help.txt");
+const CONFIG_FILE: &str = "tuilemap.cfg";
 
 #[derive(Default)]
 struct Map {
@@ -113,10 +114,39 @@ enum Mode {
     Visual { x: usize, y: usize },
 }
 
+#[derive(Default)]
+struct Config {
+    width: usize,
+    height: usize,
+    tileset: String,
+}
+
+fn read_cfg() -> Config {
+    let mut cfg = Config {
+        width: 8,
+        height: 8,
+        tileset: "abcdefgh".to_string(),
+    };
+
+    if let Ok(data) = std::fs::read_to_string(CONFIG_FILE) {
+        for line in data.lines() {
+            let line = line.trim();
+
+            if let Some(width) = line.strip_prefix("width = ") {
+                cfg.width = width.parse().unwrap_or(8);
+            } else if let Some(height) = line.strip_prefix("height = ") {
+                cfg.height = height.parse().unwrap_or(8);
+            } else if let Some(tileset) = line.strip_prefix("tileset = ") {
+                cfg.tileset = tileset.trim().to_string();
+            }
+        }
+    }
+
+    cfg
+}
+
 fn main() {
-    let mut width = 8;
-    let mut height = 8;
-    let mut tileset = "~_$nA".to_string();
+    let Config { mut width, mut height, mut tileset } = read_cfg();
 
     let mut x = 0;
     let mut y = 0;

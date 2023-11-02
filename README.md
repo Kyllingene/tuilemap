@@ -16,9 +16,20 @@ While tuilemap is designed for designing tilemaps, it is usable as an ASCII
 art editor; be warned, the experience may not be great, and there are no
 colors.
 
+## Config
+
+The configuration is very basic. When you open tuilemap, it looks for a file
+called `tuilemap.cfg` in the current directory. This supports three keys at
+present:
+- `width = `: Set the default width
+- `height = `: Set the default height
+- `tileset = `: Set the default tileset
+
+The parsing is extremely simplistic, so very little is supported.
+
 ## Keybindings
 
- - `1-0`: Place a tile from the tileset
+ - `1-0`: Place a tile from the tileset (1 is first, 0 is last)
  - `t`: Change the tileset
  - `a / i`: Enter edit mode to enter arbitrary characters
  - `v / V`: Enter visual mode to select a region of text

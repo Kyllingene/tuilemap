@@ -37,8 +37,8 @@ will be taken literally, but values are trimmed.
  - `Escape`: Return to normal mode
  - `Space`: Erase the current tile
  - `Backspace`: Erase the current tile and go left one tile
- - `f / F`: Go to the top / bottom of a file
- - `Home / End OR g / G`: Go to the start / end of a row
+ - `g / G`: Go to the top / bottom of a file
+ - `Home / End OR f / F`: Go to the start / end of a row
  - `s`: Save the file (type `cancel` to cancel)
  - `l`: Load a file (type `cancel` to cancel)
  - `n`: Create a new file with given dimensions

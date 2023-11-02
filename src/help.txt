@@ -9,9 +9,9 @@ keybinds:
     space : erase current tile
     backspace : erase current space
         and go back
-    f / F : go to top/bottom of file
+    g / G : go to top/bottom of file
     home / end OR
-    g / G : go to start/end of line
+    f / F : go to start/end of line
     `cancel` to cancel these two:
         s : save file
         l : load file

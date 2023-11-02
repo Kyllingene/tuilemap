@@ -201,10 +201,10 @@ fn main() {
             Key::ArrowRight => x = (width - 1).min(x + 1),
             Key::ArrowUp => y = y.saturating_sub(1),
             Key::ArrowDown => y = (height - 1).min(y + 1),
-            Key::Home | Key::Char('g') => x = 0,
-            Key::End | Key::Char('G') => x = width - 1,
-            Key::Char('f') => y = 0,
-            Key::Char('F') => y = height - 1,
+            Key::Home | Key::Char('f') => x = 0,
+            Key::End | Key::Char('F') => x = width - 1,
+            Key::Char('g') => y = 0,
+            Key::Char('G') => y = height - 1,
             Key::Backspace => {
                 map.set(x, y, ' ');
                 x = x.saturating_sub(1);

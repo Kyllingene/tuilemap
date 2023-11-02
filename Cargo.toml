@@ -1,0 +1,10 @@
+[package]
+name = "tuilemap"
+version = "1.0.0"
+edition = "2021"
+
+description = "A minimalistic ASCII tilemap editor."
+license = "MIT"
+
+[dependencies]
+cod = { version = "6.1", features = ["input"] }

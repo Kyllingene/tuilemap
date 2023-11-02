@@ -1,0 +1,20 @@
+keybinds:
+    1-0   : place tile from tileset
+    t     : change tileset
+    a / i : enter insert mode:
+        enter arbitrary characters
+    v / V : enter visual mode:
+        select a large swath to set
+    esc   : return to normal mode
+    space : erase current tile
+    backspace : erase current space
+        and go back
+    f / F : go to top/bottom of file
+    home / end OR
+    g / G : go to start/end of line
+    `cancel` to cancel these two:
+        s : save file
+        l : load file
+    any invalid num to cancel:
+        n : create new file
+    h : show this help screen

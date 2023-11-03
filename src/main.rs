@@ -64,10 +64,12 @@ impl Map {
     }
 
     fn set(&mut self, x: usize, y: usize, tile: char) {
-        self.tiles
+        if let Some(ch) = self.tiles
             .get_mut(y)
             .and_then(|row| row.get_mut(x))
-            .map(|ch| *ch = tile);
+        {
+            *ch = tile;
+        }
     }
 
     fn write(&mut self, x: usize, y: usize, tile: char, mode: &mut Mode) {
@@ -173,6 +175,11 @@ fn main() {
 
         cod::blit("Tileset: ", 0, height as u32 + 1);
         cod::blit(&tileset, 9, height as u32 + 1);
+
+        cod::goto::pos(width as u32 + 2, 0);
+        print!("x: {x}");
+        cod::goto::pos(width as u32 + 2, 1);
+        print!("y: {y}");
 
         cod::color::de();
         map.draw(0, 0, &mode, x, y);

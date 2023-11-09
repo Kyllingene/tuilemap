@@ -158,20 +158,20 @@ fn main() {
     let mut edit = false;
 
     if let Some(file) = args.next() {
-        let data = std::fs::read_to_string(file).expect("Failed to read file");
-
-        let width = data.split('\n').fold(0, |w, l| w.max(l.len()));
-        map.tiles = data
-            .lines()
-            .map(|l| {
-                l.chars()
-                    // pad lines that are too short...
-                    .chain(std::iter::repeat(' ').take(width))
-                    // ...without becoming too large
-                    .take(width)
-                    .collect::<Vec<char>>()
-            })
-            .collect::<Vec<_>>();
+        if let Ok(data) = std::fs::read_to_string(file) {
+            let width = data.split('\n').fold(0, |w, l| w.max(l.len()));
+            map.tiles = data
+                .lines()
+                .map(|l| {
+                    l.chars()
+                        // pad lines that are too short...
+                        .chain(std::iter::repeat(' ').take(width))
+                        // ...without becoming too large
+                        .take(width)
+                        .collect::<Vec<char>>()
+                })
+                .collect::<Vec<_>>();
+        }
     }
 
     loop {
@@ -300,20 +300,22 @@ fn main() {
                     continue;
                 }
 
-                let data = std::fs::read_to_string(file).expect("Failed to read file");
-
-                let width = data.split('\n').fold(0, |w, l| w.max(l.len()));
-                map.tiles = data
-                    .lines()
-                    .map(|l| {
-                        l.chars()
-                            // pad lines that are too short...
-                            .chain(std::iter::repeat(' ').take(width))
-                            // ...without becoming too large
-                            .take(width)
-                            .collect::<Vec<char>>()
-                    })
-                    .collect::<Vec<_>>();
+                if let Ok(data) = std::fs::read_to_string(file) {
+                    let width = data.split('\n').fold(0, |w, l| w.max(l.len()));
+                    map.tiles = data
+                        .lines()
+                        .map(|l| {
+                            l.chars()
+                                // pad lines that are too short...
+                                .chain(std::iter::repeat(' ').take(width))
+                                // ...without becoming too large
+                                .take(width)
+                                .collect::<Vec<char>>()
+                        })
+                        .collect::<Vec<_>>();
+                } else {
+                    map.reset(width, height);
+                }
 
                 x = 0;
                 y = 0;
